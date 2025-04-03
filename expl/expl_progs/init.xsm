@@ -13,38 +13,28 @@ JZ R2, 2110
 MOV R1, R0
 MUL R1, R0
 
-// Save register context
 PUSH R0
 PUSH R1
 PUSH R2
 
-// Push system call number and arguments
 MOV R0, 5
 MOV R2, -2
 PUSH R0
 PUSH R2
 PUSH R1
-PUSH R0
-
-// Push space for return value
-PUSH R0
+PUSH R1
+PUSH R1
 INT 7
 
-// Pop and ignore return value
-POP R1
-
-// Pop arguments and system call number
 POP R1
 POP R1
 POP R1
 POP R1
-
-// Restore register context
+POP R1
 POP R2
 POP R1
 POP R0
 
 ADD R0, 1
 JMP 2058
-
 INT 10
